@@ -1,0 +1,5 @@
+sample/bin/
+sample/obj/
+
+*.suo
+*.user

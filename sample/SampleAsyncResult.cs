@@ -1,39 +1,7 @@
-asyncresult
-===
-
-asyncresult provides a couple of classes to implement IAsyncResult. It is mostly derived
-from the code presented in 
-[How to implement the IAsyncResult design pattern][howtoimplement]
-by Niko Schuessler, which in turn was based on the code in the MSDN article
-[ Implementing the CLR Asynchronous Programming Model][msdnarticle]
-
-Example
----
-
-```C#
-using System;
+﻿using System;
 using System.IO;
 using System.Net;
 using CookComputing.AsynchronousProgrammingModel;
-
-public class SampleWebClient
-{
-  public IAsyncResult BeginGet(
-      string uri,
-      AsyncCallback asyncCallback,
-      object state)
-  {
-    var result = new SampleAsyncResult(new Uri(uri), asyncCallback, 
-      state, this, "get");
-    result.Process();
-    return result;
-  }
-
-  public string EndGet(IAsyncResult result)
-  {
-    return AsyncResult<string>.End(result, this, "get");
-  }
-}
 
 class SampleAsyncResult : AsyncResult<string>
 {
@@ -91,7 +59,3 @@ class SampleAsyncResult : AsyncResult<string>
       _webResponse.Close();
   }
 }
-```
-
-[howtoimplement]: http://blogs.msdn.com/b/nikos/archive/2011/03/14/how-to-implement-iasyncresult-in-another-way.aspx
-[msdnarticle]: http://msdn.microsoft.com/en-us/magazine/cc163467.aspx
