@@ -10,7 +10,7 @@ by Niko Schuessler, which in turn was based on the code in the MSDN article
 Example
 ---
 
-```C#
+```c#
 using System;
 using System.IO;
 using System.Net;
